@@ -16,7 +16,7 @@
     "url": "https://github.com/Bordekar018/RNLec/issues"
   },
   "homepage": "https://github.com/Bordekar018/RNLec#readme",
-  "dependencies": {
+  "dependnpmencies": {
     "express": "^4.17.1"
   }
 }
