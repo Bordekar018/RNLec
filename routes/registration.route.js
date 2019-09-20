@@ -26,4 +26,9 @@ router.post('/regis',async(req,res)=>{
     
 })
 
+router.get('/database',async(req,res)=>{
+ let getdata=await ur.formmodel.find({})
+ res.send(getdata)
+})
+
 module.exports=router
