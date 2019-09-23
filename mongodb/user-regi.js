@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const joi=require('joi')
+const joi=require('@hapi/joi')
 mongoose.connect('mongodb://localhost/UserRegistration',{
     useUnifiedTopology: true,
     useNewUrlParser: true
@@ -29,7 +29,7 @@ mongoose.connect('mongodb://localhost/UserRegistration',{
   let formmodel=mongoose.model('Registration',formschema)
 
   function validationError(reqbodyparameter){
-      let data_which_we_have_to_pass_to_store=joi.object().keys({
+      let data_which_we_have_to_pass_to_store=joi.object({
         firstname:joi.string().min(3).max(20).required(),
         lastname:joi.string().min(3).max(20).required(),
         userId:joi.number().required(),
