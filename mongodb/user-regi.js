@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const joi=require('@hapi/joi')
+const Joi=require('@hapi/joi')
 mongoose.connect('mongodb://localhost/UserRegistration',{
     useUnifiedTopology: true,
     useNewUrlParser: true
@@ -29,22 +29,22 @@ mongoose.connect('mongodb://localhost/UserRegistration',{
   let formmodel=mongoose.model('Registration',formschema)
 
   function validationError(reqbodyparameter){
-      let data_which_we_have_to_pass_to_store=joi.object({
-        firstname:joi.string().min(3).max(20).required(),
-        lastname:joi.string().min(3).max(20).required(),
-        userId:joi.number().required(),
+      let Schema=Joi.object().keys({
+        firstname:Joi.string().min(3).max(20).required(),
+        lastname:Joi.string().min(3).max(20).required(),
+        userId:Joi.number().required(),
         userlogin:{
-            emailId:joi.string().required(),
-            password:joi.string().required()
+            emailId:Joi.string().required(),
+            password:Joi.string().required()
         },
         address:{
-            city:joi.string().min(4).max(20).required(),
-            state:joi.string().min(4).max(20).required(),
-            pincode:joi.number().required()
+            city:Joi.string().min(4).max(20).required(),
+            state:Joi.string().min(4).max(20).required(),
+            pincode:Joi.number().required()
         },
-        mobileno:joi.number().required()
+        mobileno:Joi.number().required()
       })
-      return joi.validate(reqbodyparameter,data_which_we_have_to_pass_to_store)
+      return Joi.validate(reqbodyparameter,Schema)
   }
 
-  module.exports={formschema,formmodel,validationError}
+  module.exports={formmodel,validationError}
