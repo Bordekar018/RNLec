@@ -1,4 +1,5 @@
 const express=require('express') 
+const bcrypt=require('bcryptjs')
 let router=express.Router()
 const ur=require('../mongodb/user-regi')
 
@@ -28,10 +29,16 @@ router.post('/regis',async(req,res)=>{
       address:req.body.address,
       mobileno:req.body.mobileno    
     })
+
+    let salt= await bcrypt.genSaltSync(10)
+    data_will_store_in_database.userlogin.password=await bcrypt
+                                                    .hashSync(data_will_store_in_database.userlogin.password,salt)
+
     let data=await data_will_store_in_database.save()
     res.send({message:'Ok',data_will_store_in_database:data})
     
 })
+
 
 router.get('/database',async(req,res)=>{
  let getdata=await ur.formmodel.find({})
