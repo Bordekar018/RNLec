@@ -30,9 +30,9 @@ router.post('/regis',async(req,res)=>{
       mobileno:req.body.mobileno    
     })
 
-    let salt= await bcrypt.genSaltSync(10)
+    let salt= await bcrypt.genSalt(10)
     data_will_store_in_database.userlogin.password=await bcrypt
-                                                    .hashSync(data_will_store_in_database.userlogin.password,salt)
+                                                    .hash(data_will_store_in_database.userlogin.password,salt)
 
     let data=await data_will_store_in_database.save()
     res.send({message:'Ok',data_will_store_in_database:data})
