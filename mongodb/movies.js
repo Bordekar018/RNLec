@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-let joi=require('joi')
+let joi=require('@hapi/joi')
 let gschema=require('./genre')
 
 let moviesschema=new mongoose.Schema({

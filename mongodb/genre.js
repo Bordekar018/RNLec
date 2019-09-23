@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-let joi=require('joi')
+let joi=require('@hapi/joi')
 
   let genreschema=new mongoose.Schema({
       name:{type:String,required:true,min:4,max:20}

@@ -1,4 +1,4 @@
-const Joi = require("joi"); /// important
+const Joi = require('@hapi/joi'); /// important
 
 const express = require("express");
 

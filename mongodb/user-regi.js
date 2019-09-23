@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const joi=require()
+const joi=require('@hapi/joi')
 mongoose.connect('mongodb://localhost/UserRegistration',{
     useUnifiedTopology: true,
     useNewUrlParser: true
