@@ -1,13 +1,5 @@
 const mongoose = require('mongoose')
 const Joi=require('@hapi/joi')
-mongoose.connect('mongodb://localhost/UserRegistration',{
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  }).then(()=>{
-      console.log("Successful")
-  }).catch((err)=>{
-    console.log("Not Successful",err)
-})
 
   let formschema= new mongoose.Schema({
       firstname:{type:String,required:true},

@@ -8,6 +8,7 @@ const movies=require('./routes/movie.route')
 const userroute = require("./routes/user.route");
 const middleware = require("./middleware/user");
 const genre=require('./routes/genre.route')
+const autho=require('./auth/auth')
 const registration=require('./routes/registration.route')
 app.use(express.json());
 if (config.get("host.mail") === "Development Mode") {
@@ -47,6 +48,7 @@ app.use("/api", userroute);
 app.use("/api/movie",genre);
 app.use("/api/movie",movies);
 app.use("/api",registration)
+app.use("/api",autho)
 app.listen(port, () => {
   console.log("Server is working on port" + port);
 });
