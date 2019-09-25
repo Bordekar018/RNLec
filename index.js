@@ -9,6 +9,7 @@ const userroute = require("./routes/user.route");
 const middleware = require("./middleware/user");
 const genre=require('./routes/genre.route')
 const autho=require('./auth/auth')
+const fileupload=require('./routes/fileupload.route')
 const registration=require('./routes/registration.route')
 app.use(express.json());
 if (config.get("host.mail") === "Development Mode") {
@@ -43,12 +44,13 @@ mongoose.connect("mongodb://localhost/RNLEC",{
 //     app.set("env")
 // );
 //console.log("mode: ", config.get("host.mail"));
-
+app.use('/uploads',express.static('uploads'));
 app.use("/api", userroute);
 app.use("/api/movie",genre);
 app.use("/api/movie",movies);
 app.use("/api",registration)
-app.use("/api",autho)
+app.use("/api",autho);
+app.use("/api/up",fileupload);
 app.listen(port, () => {
   console.log("Server is working on port" + port);
 });

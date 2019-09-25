@@ -17,8 +17,13 @@ const Joi=require('@hapi/joi')
       mobileno:{type:Number,required:true}
 
   })
+   
+  let fileschema=new mongoose.Schema({
+      image:{type:String,required:true}
+  })
 
   let formmodel=mongoose.model('Registration',formschema)
+  let filemodel=mongoose.model('File',fileschema)
 
   function validationError(reqbodyparameter){
       let Schema=Joi.object().keys({
@@ -39,4 +44,4 @@ const Joi=require('@hapi/joi')
       return Joi.validate(reqbodyparameter,Schema)
   }
 
-  module.exports={formmodel,validationError}
+  module.exports={formmodel,validationError,filemodel}
