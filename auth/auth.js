@@ -21,7 +21,10 @@ let passmatch=await bcrypt.compare(req.body.userlogin.password,emailexist.userlo
 if(!passmatch){
    return res.status(402).send('invalid')
 }
-let token=jwt.sign({_id:emailexist._id},config.get('jwtprivatekey'))
+// let token=jwt.sign({_id:emailexist._id},config.get('jwtprivatekey'))   //Create a Token Of that respecting user. Static Way
+
+let token=emailexist.uservalidationtoken();
+
 res.send({message:'Congo!!!!'/*,data:emailexist,email:ok*/,token:token})
 })
 

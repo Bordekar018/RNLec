@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Joi=require('@hapi/joi')
+const jwt =require('jsonwebtoken')
+const config=require('config')
 
   let formschema= new mongoose.Schema({
       firstname:{type:String,required:true},
@@ -17,7 +19,11 @@ const Joi=require('@hapi/joi')
       mobileno:{type:Number,required:true}
 
   })
-   
+  formschema.methods.uservalidationtoken=function(){
+    let token=jwt.sign({_id:this._id},config.get('jwtprivatekey'))
+    return token
+  }
+
 //   let fileschema=new mongoose.Schema({
 //       image:{type:String,required:true}
 //   })
