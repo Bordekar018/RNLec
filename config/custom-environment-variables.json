@@ -1,3 +1,4 @@
 {
-  "password": "RNLEC_Password"
+  "password": "RNLEC_Password",
+  "jwtprivatekey":"APP_SSD"
 }

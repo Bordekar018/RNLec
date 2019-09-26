@@ -4,6 +4,7 @@ const bcrypt=require('bcryptjs')
 const router=express.Router()
 const U=require('../mongodb/user-regi')
 let Joi =require('@hapi/joi')
+let jwt=require('jsonwebtoken')
 
 
 router.post('/auth',async(req,res)=>{
@@ -20,7 +21,8 @@ let passmatch=await bcrypt.compare(req.body.userlogin.password,emailexist.userlo
 if(!passmatch){
    return res.status(402).send('invalid')
 }
-res.send({message:'Congo!!!!',data:emailexist,email:ok})
+let token=jwt.sign({_id:emailexist._id},config.get('jwtprivatekey'))
+res.send({message:'Congo!!!!'/*,data:emailexist,email:ok*/,token:token})
 })
 
 function validationerror(msg) {

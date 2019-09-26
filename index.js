@@ -12,6 +12,11 @@ const autho=require('./auth/auth')
 const fileupload=require('./routes/fileupload.route')
 const registration=require('./routes/registration.route')
 app.use(express.json());
+if(!config.get('jwtprivatekey')){
+console.error('Private key is not set!!!!!!');
+process.exit(1)
+}
+
 if (config.get("host.mail") === "Development Mode") {
   app.use(morgan("tiny")); ///Give details About request(api/user)
 }
