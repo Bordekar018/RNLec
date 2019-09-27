@@ -23,9 +23,12 @@ if(!passmatch){
 }
 // let token=jwt.sign({_id:emailexist._id},config.get('jwtprivatekey'))   //Create a Token Of that respecting user. Static Way
 
-let token=emailexist.uservalidationtoken();
-res.header('x-auth-token',token).send({message:'Congo!!!!'/*,data:emailexist,email:ok*/})
-//res.send({message:'Congo!!!!'/*,data:emailexist,email:ok*/,token:token})
+//let token=emailexist.uservalidationtoken();
+//res.header('x-auth-token',token).send({message:'Congo!!!!'/*,data:emailexist,email:ok*/})
+
+//res.send({message:'Congo!!!!',data:emailexist,email:ok})
+
+res.send({message:'Congo!!!!'})
 })
 
 function validationerror(msg) {
