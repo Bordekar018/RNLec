@@ -3,7 +3,7 @@ const bcrypt=require('bcryptjs')
 let router=express.Router()
 let ur=require('../mongodb/userregi')
 let auth=require('../middleware/authorization')
-
+let admin=require('../middleware/admin')
 
 router.get('/me',auth,async(req,res)=>{
   let user=await ur.formmodel.findById(req.userregi._id)
@@ -55,6 +55,14 @@ router.post('/regis',async(req,res)=>{
 router.get('/database',async(res)=>{
  let getdata=await ur.formmodel.find({})
  res.send(getdata)
+})
+
+router.delete('/removeu/:id',auth,async(req,res)=>{
+  let data =await ur.formmodel.findByIdAndRemove(req.params.id);
+  if(!data){
+    res.status(304).send('not deleted');
+  }
+  res.send({message:'removed'})
 })
 
 //Update Data
