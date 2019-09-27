@@ -20,7 +20,7 @@ const config=require('config')
 
   })
   formschema.methods.uservalidationtoken=function(){
-    let token=jwt.sign({_id:this._id},config.get('jwtprivatekey'))
+    let token=jwt.sign({_id:this._id,isadmin:this.isadmin},config.get('jwtprivatekey'))
     return token
   }
 

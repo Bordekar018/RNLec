@@ -57,7 +57,7 @@ router.get('/database',async(res)=>{
  res.send(getdata)
 })
 
-router.delete('/removeu/:id',auth,async(req,res)=>{
+router.delete('/removeu/:id',[auth,admin],async(req,res)=>{
   let data =await ur.formmodel.findByIdAndRemove(req.params.id);
   if(!data){
     res.status(304).send('not deleted');
