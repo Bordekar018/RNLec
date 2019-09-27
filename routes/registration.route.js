@@ -1,7 +1,17 @@
 const express=require('express') 
 const bcrypt=require('bcryptjs')
 let router=express.Router()
-const ur=require('../mongodb/userregi')
+let ur=require('../mongodb/userregi')
+let auth=require('../middleware/authorization')
+
+
+router.get('/me',auth,async(req,res)=>{
+  let user=await ur.formmodel.findById(req.userregi._id)
+                              .select("-userlogin.password")
+  res.send(user)
+})
+
+
 
 //Add new User
 router.post('/regis',async(req,res)=>{
@@ -34,8 +44,9 @@ router.post('/regis',async(req,res)=>{
     let salt= await bcrypt.genSalt(10)
     data_will_store_in_database.userlogin.password=await bcrypt
                                                     .hash(data_will_store_in_database.userlogin.password,salt)
-    let token=data_will_store_in_database.uservalidationtoken();
+   
     let data=await data_will_store_in_database.save()
+    let token=data_will_store_in_database.uservalidationtoken();
     res.header('x-auth-token',token).send({message:'Ok',data_will_store_in_database:data})
     
 })
