@@ -2,12 +2,12 @@ const express=require('express')
 const config=require('config')
 const bcrypt=require('bcryptjs')
 const router=express.Router()
-const U=require('../mongodb/user-regi')
+const U=require('../mongodb/userregi')
 let Joi =require('@hapi/joi')
 let jwt=require('jsonwebtoken')
+let authmid=require('../middleware/authorization')
 
-
-router.post('/auth',async(req,res)=>{
+router.post('/auth',authmid,async(req,res)=>{
 let {error}=validationerror(req.body)
 if(error){
     res.status(402).send(error.details[0].message)

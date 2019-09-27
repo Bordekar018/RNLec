@@ -1,6 +1,6 @@
 let express=require('express')
 let router=express.Router()
-let F=require('../mongodb/user-regi')
+let F=require('../mongodb/userregi')
 let multer=require('multer')
 
 let imgport='http://localhost:4000';
