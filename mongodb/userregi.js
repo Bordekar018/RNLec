@@ -26,12 +26,12 @@ const config=require('config')
     return token
   }
 
-//   let fileschema=new mongoose.Schema({
-//       image:{type:String,required:true}
-//   })
+  let fileschema=new mongoose.Schema({
+      image:{type:String,required:true}
+  })
 
   let formmodel=mongoose.model('Registration',formschema)
-//   let filemodel=mongoose.model('File',fileschema)
+  let filemodel=mongoose.model('File',fileschema)
 
   function validationError(reqbodyparameter){
       let Schema=Joi.object().keys({
@@ -52,4 +52,4 @@ const config=require('config')
       return Joi.validate(reqbodyparameter,Schema)
   }
 
-module.exports={formmodel,validationError/*,filemodel*/}
+module.exports={formmodel,validationError,filemodel}
