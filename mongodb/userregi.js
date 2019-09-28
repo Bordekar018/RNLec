@@ -16,7 +16,9 @@ const config=require('config')
           state:{type:String,required:true},
           pincode:{type:Number,required:true}
       },
-      mobileno:{type:Number,required:true}
+      mobileno:{type:Number,required:true},
+      isadmin:{type:Boolean}
+
 
   })
   formschema.methods.uservalidationtoken=function(){
