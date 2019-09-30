@@ -12,6 +12,7 @@ const autho=require('./auth/auth')
 const fileupload=require('./routes/fileupload.route')
 const registration=require('./routes/registration.route')
 const mailer =require('./routes/nodemailer')
+const reset=require('./routes/resetpass')
 app.use(express.json());
 
 
@@ -57,6 +58,7 @@ app.use("/api/movie",movies);
 app.use("/api",registration)
 app.use("/api",autho);
 app.use("/api",mailer)
+app.use('/api/reset',reset)
 app.use("/api/up",fileupload);
 
 app.listen(port, () => {

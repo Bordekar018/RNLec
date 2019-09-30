@@ -21,7 +21,7 @@ router.post('/mail',async(req,res)=>{
         secure: true, // true for 465, false for other ports
         auth: {
             user: 'bordekardarshan@gmail.com',
-            pass: 'XXXXXXX'
+            pass: 'XXXXXXXX'
           },
           tls: {rejectUnauthorized: false},
         debug:true
