@@ -11,6 +11,7 @@ const genre=require('./routes/genre.route')
 const autho=require('./auth/auth')
 const fileupload=require('./routes/fileupload.route')
 const registration=require('./routes/registration.route')
+const mailer =require('./routes/nodemailer')
 app.use(express.json());
 
 
@@ -55,6 +56,7 @@ app.use("/api/movie",genre);
 app.use("/api/movie",movies);
 app.use("/api",registration)
 app.use("/api",autho);
+app.use("/api",mailer)
 app.use("/api/up",fileupload);
 
 app.listen(port, () => {

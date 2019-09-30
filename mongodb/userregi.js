@@ -11,6 +11,8 @@ const config=require('config')
           emailId:{type:String,required:true},
           password:{type:String,required:true}
       },
+      resetpasswordtoken:{type:String},
+      resetpasswordexpires:{type:Date},
       address:{
           city:{type:String,required:true},
           state:{type:String,required:true},
